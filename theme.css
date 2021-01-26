@@ -1,0 +1,136 @@
+/*!
+ * Do a Find and Replace for "#0d47a1" with the Colour you want to use for your Accent Colour.
+ * Additionally do a Find and Replace for "13, 71, 161" with the RGB values making sure to do the same commas.
+ *
+ * If you want to customise the Logo to become the Accent colour, you can look at the difference of the Hue + Saturation of the YTM Logo
+ * And then compare it against the colour you have done. Then with the difference put them in the Hue + Saturation.
+ * It's not perfect but gives you a chance to have some more unique customisations.
+ *
+ * Additionally most things are labelled for what additional changes are made
+ */
+
+
+/* YouTube Music */
+html:not(.style-scope)[dark], :not(.style-scope)[dark] {
+    --ytmusic-static-brand-red          : #0d47a1;
+    --yt-spec-brand-link-text           : #0d47a1;
+    --yt-spec-brand-button-background   : #0d47a1;
+    --ytmusic-setting-item-toggle-active: #0d47a1;
+    --yt-button-color                   : #0d47a1;
+    --yt-red                            : #0d47a1 !important;
+    
+    /* Change Navigation bar colour */
+    --ytmusic-nav-bar: #0d47a1;
+    
+    /* Change the hover background for Context Menu */
+    --ytmusic-menu-item-hover-background-color: rgba(13, 71, 161, 0.5);
+}
+
+ytmusic-subscribe-button-renderer {
+    --ytmusic-subscribe-button-color    : #0d47a1;
+}
+
+/* YouTube Logo in the top left */
+.logo.ytmusic-nav-bar {
+    /* This will need some tweeking depending on the user's colour */
+    filter: hue-rotate(216.49deg) saturate(0.85);
+    transition: filter 0.2s;
+}
+ytmusic-app-layout[player-page-open_] .logo.ytmusic-nav-bar,
+.content-scrolled .logo.ytmusic-nav-bar {
+    filter: grayscale(100%)
+            hue-rotate(0deg)
+            contrast(1.5)
+        !important;
+}
+
+/* Progress Bar + Volume */
+#progress-bar.ytmusic-player-bar {
+    --paper-slider-active-color     : #0d47a1;
+}
+#progress-bar.ytmusic-player-bar[focused],
+ytmusic-player-bar:hover #progress-bar.ytmusic-player-bar,
+.volume-slider.ytmusic-player-bar, .expand-volume-slider.ytmusic-player-bar {
+    --paper-slider-knob-color               : #0d47a1;
+    --paper-slider-knob-start-color         : #0d47a1;
+    --paper-slider-knob-start-border-color  : #0d47a1;
+    --paper-progress-active-color           : #0d47a1 !important;
+}
+
+
+/* Loading Wheel on Songs */
+ytmusic-play-button-renderer {
+    --ytmusic-play-button-loading-indicator-color: #0d47a1 !important;
+    --paper-spinner-color                        : #0d47a1 !important;
+}
+
+/* New Recommendations + More */
+a.ytmusic-content-update-chip {
+    background: #030303;
+    color: #fff;
+    --yt-endpoint-hover-color: rgba(255,255,255, .7);
+}
+
+
+/* Swap Bottom Play Bar */
+ytmusic-app-layout > [slot=player-bar] {
+    grid-template-columns: 1fr 0fr 1fr;
+}
+ytmusic-app-layout .left-controls {
+    grid-area: middle !important;
+    width: 300px;
+}
+
+ytmusic-app-layout .middle-controls {
+    justify-content: normal !important;
+    
+    grid-area: start !important;
+    min-width: 300px;
+}
+ytmusic-app-layout .middle-controls .image.ytmusic-player-bar {
+    /* 2px is to remove the space for the progress bar and aligned to the bottom */
+    height: calc(100% - 2px);
+    align-self: flex-end;
+}
+
+@media (max-width: 1149px) {
+    ytmusic-app-layout .left-controls, ytmusic-app-layout .right-controls {
+        width: 150px !important;
+    }
+    ytmusic-app-layout .middle-controls {
+        min-width: 100px;
+    }
+}
+
+
+/* Play button Background */
+#play-pause-button {
+    background: #0d47a1;
+    border-radius: 100%
+}
+#play-pause-button:hover {
+    transition: 0.2s;
+    background: rgba(13, 71, 161, 0.7);
+}
+
+/* Swaps Mini player to the Left */
+/* ytmusic-player[player-ui-state_=MINIPLAYER] {
+    left: calc(2 * var(--ytmusic-mini-player-spacing));
+    right: 0;
+} */
+
+
+/* Remove pointless "Album ()" from Album Header */
+#header .metadata .ytmusic-data-bound-header-renderer yt-formatted-string span.yt-formatted-string:nth-of-type(1), #header .metadata .ytmusic-data-bound-header-renderer yt-formatted-string span.yt-formatted-string:nth-of-type(2) {
+    display: none;
+}
+
+ytmusic-app-layout[player-fullscreened_] > [slot=player-bar] {
+    background: rgba(25,25,25,0.8) !important;
+    width: 100%;
+}
+
+
+ytmusic-player-queue-item.style-scope.ytmusic-player-queue {
+    --ytmusic-player-queue-item-thumbnail-size: 50px !important;
+}
