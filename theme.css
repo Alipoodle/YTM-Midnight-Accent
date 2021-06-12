@@ -30,19 +30,6 @@ ytmusic-subscribe-button-renderer {
     --ytmusic-subscribe-button-color    : #0d47a1;
 }
 
-/* YouTube Logo in the top left */
-.logo.ytmusic-nav-bar {
-    /* This will need some tweeking depending on the user's colour */
-    filter: hue-rotate(216.49deg) saturate(0.85);
-    transition: filter 0.2s;
-}
-ytmusic-app-layout[player-page-open_] .logo.ytmusic-nav-bar,
-.content-scrolled .logo.ytmusic-nav-bar {
-    filter: grayscale(100%)
-            hue-rotate(0deg)
-            contrast(1.5)
-        !important;
-}
 
 /* Progress Bar + Volume */
 #progress-bar.ytmusic-player-bar {
@@ -57,6 +44,20 @@ ytmusic-player-bar:hover #progress-bar.ytmusic-player-bar,
     --paper-progress-active-color           : #0d47a1 !important;
 }
 
+
+/* YouTube Logo in the top left */
+.logo.ytmusic-nav-bar {
+    /* This will need some tweeking depending on the user's colour */
+    filter: hue-rotate(216.49deg) saturate(0.85);
+    transition: filter 0.2s;
+}
+ytmusic-app-layout[player-page-open_] .logo.ytmusic-nav-bar,
+.content-scrolled .logo.ytmusic-nav-bar {
+    filter: grayscale(100%)
+            hue-rotate(0deg)
+            contrast(1.5)
+        !important;
+}
 
 /* Loading Wheel on Songs */
 ytmusic-play-button-renderer {
@@ -77,6 +78,7 @@ ytmusic-app-layout > [slot=player-bar] {
     grid-template-columns: 1fr 0fr 1fr;
 }
 ytmusic-app-layout .left-controls {
+    justify-content: flex-end !important;
     grid-area: middle !important;
     width: 300px;
 }
@@ -96,6 +98,7 @@ ytmusic-app-layout .middle-controls .image.ytmusic-player-bar {
 @media (max-width: 1149px) {
     ytmusic-app-layout .left-controls, ytmusic-app-layout .right-controls {
         width: 150px !important;
+        justify-content: flex-start !important;
     }
     ytmusic-app-layout .middle-controls {
         min-width: 100px;
@@ -121,7 +124,8 @@ ytmusic-app-layout .middle-controls .image.ytmusic-player-bar {
 
 
 /* Remove pointless "Album ()" from Album Header */
-#header .metadata .ytmusic-data-bound-header-renderer yt-formatted-string span.yt-formatted-string:nth-of-type(1), #header .metadata .ytmusic-data-bound-header-renderer yt-formatted-string span.yt-formatted-string:nth-of-type(2) {
+#header .metadata .ytmusic-data-bound-header-renderer yt-formatted-string span.yt-formatted-string:nth-of-type(1),
+#header .metadata .ytmusic-data-bound-header-renderer yt-formatted-string span.yt-formatted-string:nth-of-type(2) {
     display: none;
 }
 
