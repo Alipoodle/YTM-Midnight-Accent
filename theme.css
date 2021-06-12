@@ -98,6 +98,8 @@ ytmusic-app-layout .middle-controls .image.ytmusic-player-bar {
 @media (max-width: 1149px) {
     ytmusic-app-layout .left-controls, ytmusic-app-layout .right-controls {
         width: 150px !important;
+    }
+    ytmusic-app-layout .left-controls {
         justify-content: flex-start !important;
     }
     ytmusic-app-layout .middle-controls {
