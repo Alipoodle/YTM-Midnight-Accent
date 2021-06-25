@@ -72,6 +72,16 @@ a.ytmusic-content-update-chip {
     --yt-endpoint-hover-color: rgba(255,255,255, .7);
 }
 
+/* Increase the Image in the Bottom Bar */
+.thumbnail-image-wrapper.ytmusic-player-bar {
+    height: 100%;
+    padding-top: calc(var(--paper-progress-height) * 2);
+}
+ytmusic-app-layout .middle-controls .image.ytmusic-player-bar {
+    /* 2px is to remove the space for the progress bar and aligned to the bottom */
+    height: calc(100% - 2px);
+    align-self: flex-end;
+}
 
 /* Swap Bottom Play Bar */
 ytmusic-app-layout > [slot=player-bar] {
@@ -88,11 +98,6 @@ ytmusic-app-layout .middle-controls {
     
     grid-area: start !important;
     min-width: 300px;
-}
-ytmusic-app-layout .middle-controls .image.ytmusic-player-bar {
-    /* 2px is to remove the space for the progress bar and aligned to the bottom */
-    height: calc(100% - 2px);
-    align-self: flex-end;
 }
 
 @media (max-width: 1149px) {
