@@ -19,11 +19,15 @@ html:not(.style-scope)[dark], :not(.style-scope)[dark] {
     --yt-button-color                   : #0d47a1;
     --yt-red                            : #0d47a1 !important;
     
-    /* Change Navigation bar colour */
-    --ytmusic-nav-bar: #0d47a1;
+
     
     /* Change the hover background for Context Menu */
     --ytmusic-menu-item-hover-background-color: rgba(13, 71, 161, 0.5);
+}
+
+#nav-bar-background, ytmusic-app[guide-collapsed] #mini-guide-background {
+    /* Change Navigation bar colour */
+    --ytmusic-nav-bar: #0d47a1;
 }
 
 ytmusic-subscribe-button-renderer {
@@ -45,14 +49,14 @@ ytmusic-player-bar:hover #progress-bar.ytmusic-player-bar,
 }
 
 
-/* YouTube Logo in the top left */
-.logo.ytmusic-nav-bar {
+/* === YouTube Logo in the top left === */
+.ytmusic-nav-bar .ytmusic-logo {
     /* This will need some tweeking depending on the user's colour */
-    filter: hue-rotate(216.49deg) saturate(0.85);
+    filter: hue-rotate(316.49deg) saturate(0.85);
     transition: filter 0.2s;
 }
-ytmusic-app-layout[player-page-open_] .logo.ytmusic-nav-bar,
-.content-scrolled .logo.ytmusic-nav-bar {
+ytmusic-app-layout[player-page-open] .ytmusic-nav-bar .ytmusic-logo,
+ytmusic-app-layout.content-scrolled .ytmusic-nav-bar .ytmusic-logo {
     filter: grayscale(100%)
             hue-rotate(0deg)
             contrast(1.5)
@@ -72,7 +76,7 @@ a.ytmusic-content-update-chip {
     --yt-endpoint-hover-color: rgba(255,255,255, .7);
 }
 
-/* Increase the Image in the Bottom Bar */
+/* === Increase the Image in the Bottom Bar === */
 .thumbnail-image-wrapper.ytmusic-player-bar {
     height: 100%;
     padding-top: calc(var(--paper-progress-height) * 2);
@@ -83,7 +87,8 @@ ytmusic-app-layout .middle-controls .image.ytmusic-player-bar {
     align-self: flex-end;
 }
 
-/* Swap Bottom Play Bar */
+
+/* === Swap Bottom Play Bar === */
 ytmusic-app-layout > [slot=player-bar] {
     grid-template-columns: 1fr 0fr 1fr;
 }
@@ -113,7 +118,7 @@ ytmusic-app-layout .middle-controls {
 }
 
 
-/* Play button Background */
+/* === Play button Background === */
 #play-pause-button {
     background: #0d47a1;
     border-radius: 100%
@@ -130,18 +135,11 @@ ytmusic-app-layout .middle-controls {
 } */
 
 
-/* Remove pointless "Album ()" from Album Header */
-#header .metadata .ytmusic-data-bound-header-renderer yt-formatted-string span.yt-formatted-string:nth-of-type(1),
-#header .metadata .ytmusic-data-bound-header-renderer yt-formatted-string span.yt-formatted-string:nth-of-type(2) {
-    display: none;
-}
-
 ytmusic-app-layout[player-fullscreened_] > [slot=player-bar] {
     background: rgba(25,25,25,0.8) !important;
     width: 100%;
 }
 
-
-ytmusic-player-queue-item.style-scope.ytmusic-player-queue {
+.left-items.ytmusic-player-queue-item {
     --ytmusic-player-queue-item-thumbnail-size: 50px !important;
 }
