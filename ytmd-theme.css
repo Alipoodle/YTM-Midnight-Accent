@@ -18,16 +18,20 @@ html:not(.style-scope)[dark], :not(.style-scope)[dark] {
     --ytmusic-setting-item-toggle-active: #0d47a1 !important;
     --yt-button-color                   : #0d47a1 !important;
     --yt-red                            : #0d47a1 !important;
+    
 
-    --ytmusic-nav-bar: #0d47a1  !important;
-
+    
     /* Change the hover background for Context Menu */
-    --ytmusic-menu-item-hover-background-color: rgba(13, 71, 161, 0.5) !important;
+    --ytmusic-menu-item-hover-background-color: rgba(13, 71, 161, 0.5);
 }
 
-/* Change Navigation bar colour (needs to be more specific for YTM Desktop */
-#nav-bar-background {
-    --ytmusic-nav-bar: #0d47a1  !important;
+/* === Change Navigation bar colour === */
+/* Top Navigation */
+#nav-bar-background,
+/* Side Navigation */
+ytmusic-app[guide-collapsed] #mini-guide-background {
+    
+    --ytmusic-nav-bar: #0d47a1;
 }
 
 ytmusic-subscribe-button-renderer {
@@ -35,7 +39,7 @@ ytmusic-subscribe-button-renderer {
 }
 
 
-/* Progress Bar + Volume */
+/* === Progress Bar + Volume === */
 #progress-bar.ytmusic-player-bar {
     --paper-slider-active-color     : #0d47a1 !important;
 }
@@ -49,61 +53,68 @@ ytmusic-player-bar:hover #progress-bar.ytmusic-player-bar,
 }
 
 
-/* YouTube Logo in the top left */
-.logo.ytmusic-nav-bar {
+/* === YouTube Logo in the top left === */
+.ytmusic-nav-bar .ytmusic-logo {
     /* This will need some tweeking depending on the user's colour */
-    filter: hue-rotate(216.49deg) saturate(0.85);
+    filter: hue-rotate(316.49deg) saturate(0.85);
     transition: filter 0.2s;
 }
-ytmusic-app-layout[player-page-open_] .logo.ytmusic-nav-bar,
-.content-scrolled .logo.ytmusic-nav-bar {
+ytmusic-app-layout[player-page-open] .ytmusic-nav-bar .ytmusic-logo,
+ytmusic-app-layout.content-scrolled .ytmusic-nav-bar .ytmusic-logo {
+	/* Black version when titlebar is coloured */
     filter: grayscale(100%)
             hue-rotate(0deg)
             contrast(1.5)
         !important;
 }
 
-/* Loading Wheel on Songs */
+/* === Loading Wheel on Songs === */
 ytmusic-play-button-renderer {
     --ytmusic-play-button-loading-indicator-color: #0d47a1 !important;
     --paper-spinner-color                        : #0d47a1 !important;
 }
 
-/* New Recommendations + More */
+/* === New Recommendations + More === (might no longer be used) */
 a.ytmusic-content-update-chip {
-    background: #030303 !important;
-    color: #fff !important;
-    --yt-endpoint-hover-color: rgba(255,255,255, .7) !important;
+    background: #030303;
+    color: #fff;
+    --yt-endpoint-hover-color: rgba(255,255,255, .7);
 }
 
-/* Increase the Image in the Bottom Bar */
+/* === Increase the Image in the Player bar === */
 .thumbnail-image-wrapper.ytmusic-player-bar {
     height: 100% !important;
-    padding-top: calc(var(--paper-progress-height) * 2);
+    padding-top: calc(var(--paper-progress-height) * 2) !important;
 }
 ytmusic-app-layout .middle-controls .image.ytmusic-player-bar {
     /* 2px is to remove the space for the progress bar and aligned to the bottom */
     height: calc(100% - 2px) !important;
-    align-self: flex-end;
+    align-self: flex-end !important;
 }
 
-/* Swap Bottom Play Bar */
-ytmusic-app-layout > [slot=player-bar] {
-    grid-template-columns: 1fr 0fr 1fr;
+/* === Increase the size of the Queue's Pictures === */
+.left-items.ytmusic-player-queue-item {
+    --ytmusic-player-queue-item-thumbnail-size: 50px !important;
 }
+
+/* === Swap Bottom Play Bar around to match Google Play (Song, Controls, Extra Controls) === */
+ytmusic-app-layout > [slot=player-bar] {
+    grid-template-columns: 1fr 0fr 1fr !important;
+}
+/* Fix up some alignment for the controls */
 ytmusic-app-layout .left-controls {
     justify-content: flex-end !important;
     grid-area: middle !important;
     width: 300px;
 }
-
 ytmusic-app-layout .middle-controls {
     justify-content: normal !important;
-
+    
     grid-area: start !important;
     min-width: 300px;
 }
 
+/* Improved swapped controls at smaller sizes */
 @media (max-width: 1149px) {
     ytmusic-app-layout .left-controls, ytmusic-app-layout .right-controls {
         width: 150px !important;
@@ -117,7 +128,7 @@ ytmusic-app-layout .middle-controls {
 }
 
 
-/* Play button Background */
+/* === Play button Background === */
 #play-pause-button {
     background: #0d47a1;
     border-radius: 100%
@@ -127,32 +138,13 @@ ytmusic-app-layout .middle-controls {
     background: rgba(13, 71, 161, 0.7);
 }
 
-/* Swaps Mini player to the Left */
-/*ytmusic-player[player-ui-state_=MINIPLAYER] {
-    left: calc(2 * var(--ytmusic-mini-player-spacing));
-    right: 0;
-} */
-
-
-/* Remove pointless "Album ()" from Album Header */
-#header .metadata .ytmusic-data-bound-header-renderer yt-formatted-string span.yt-formatted-string:nth-of-type(1),
-#header .metadata .ytmusic-data-bound-header-renderer yt-formatted-string span.yt-formatted-string:nth-of-type(2) {
-    display: none;
-}
-
+/* === Set full secreen background === */
 ytmusic-app-layout[player-fullscreened_] > [slot=player-bar] {
     background: rgba(25,25,25,0.8) !important;
     width: 100%;
 }
 
-
-ytmusic-player-queue-item.style-scope.ytmusic-player-queue {
-    --ytmusic-player-queue-item-thumbnail-size: 50px !important;
-}
-
-/* -=- YTM Desktop Specific Changes -=- */
-
-/* Scrollbar:   Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #0d47a1;
+/* Center Align the Search */
+ytmusic-nav-bar[is-bauhaus-sidenav-enabled] .center-content.ytmusic-nav-bar {
+  justify-content: center !important;
 }
